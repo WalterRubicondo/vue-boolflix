@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Vue Boolflix</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+      <link rel="stylesheet" href="./master.css">
+    </head>
+    <body>
+      <div id="root">
+        <div class="container">
+          <div class="navbar">
+            <h1>Uolt.01</h1>
+            <input type="text" v-model="search" @keyup.enter="searchFilm">
+            <button type="button" name="button" @click="searchFilm">Cerca</button>
+          </div>
+          <div class="card"
+          v-for="film in films">
+          <img class="poster" v-if="film.poster_path" :src=`http://image.tmdb.org/t/p/w300/${film.poster_path}` alt="Poster film">
+          <div v-else class="comingSoon">Ciao</div>
+            <div class="info">
+              <span class="title">Titolo: {{ getTitle(film) }} </span>
+              <span class="title">Titolo Originale: {{ getOrignalTitle(film) }} </span>
+              <img v-if="film.original_language == 'en'" src="https://www.countryflags.io/us/shiny/64.png" class="language"></img>
+              <img v-else :src=`https://www.countryflags.io/${film.original_language}/shiny/64.png` class="language">
+              <div class="rating">
+                <i v-for="full in rating(film)" class="fas fa-star" ></i>
+                <i v-for="empty in (5 - rating(film))" class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <script src="./main.js" charset="utf-8"></script>
+    </body>
+  </html>

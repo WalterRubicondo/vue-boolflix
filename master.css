@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(31, 34, 34);
+}
+
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.navbar {
+  display: flex;
+  justify-content: center;
+
+  height: 50px;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+}
+
+div.navbar h1 {
+  color: rgb(255, 255, 255);
+}
+
+div.navbar input {
+  margin: auto;
+}
+
+div.navbar input {
+  width: 280px;
+  height: 25px;
+  outline: none;
+  padding-left: 5px;
+  border-radius: 15px;
+}
+
+div.navbar input::placeholder {
+  font-size: 18px;
+  text-align: center;
+}
+
+div.info {
+  color: rgb(255, 255, 255);
+  display: none;
+}
+
+div.card img.poster {
+  width: 300px;
+  height: 450px;
+}
+
+div.card:hover > img.poster,
+div.card:hover > div.comingSoon {
+  display: none;
+}
+
+div.card:hover > div.info {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: 450px;
+  background-color: rgb(0, 0, 0);
+}
+
+
+
+div.info img.language {
+  width: 30px;
+}
+
+div.comingSoon {
+  width: 300px;
+  height: 450px;
+  background-color: grey;
+}
