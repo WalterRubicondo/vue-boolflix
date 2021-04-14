@@ -12,24 +12,29 @@
       <div id="root">
         <div class="container">
           <div class="navbar">
-            <h1>Uolt.01</h1>
-            <input type="text" v-model="search" @keyup.enter="searchFilm">
-            <button type="button" name="button" @click="searchFilm">Cerca</button>
+            <img src="./logo.png" alt="">
+            <div class="searchBar">
+              <input type="text" v-model="search" @keyup.enter="searchFilm" placeholder="Cerca un film o una serie TV">
+              <button type="button" name="button" @click="searchFilm">Cerca</button>
+            </div>
           </div>
-          <div class="card"
-          v-for="film in films">
-          <img class="poster" v-if="film.poster_path" :src=`http://image.tmdb.org/t/p/w300/${film.poster_path}` alt="Poster film">
-          <div v-else class="comingSoon">Ciao</div>
+          <div class="showcase">
+            <div class="card"
+            v-for="film in films">
+            <img class="poster" v-if="film.poster_path" :src=`http://image.tmdb.org/t/p/w300/${film.poster_path}` alt="Poster film">
+            <img v-else src="https://www.websitex5.com/it/risorse/blog/files/pixabay-2550190.jpg" class="comingSoon">
             <div class="info">
-              <span class="title">Titolo: {{ getTitle(film) }} </span>
-              <span class="title">Titolo Originale: {{ getOrignalTitle(film) }} </span>
+              <span class="title"> {{ getTitle(film) }} </span>
+              <span class="originalTitle"> {{ getOrignalTitle(film) }} </span>
               <img v-if="film.original_language == 'en'" src="https://www.countryflags.io/us/shiny/64.png" class="language"></img>
               <img v-else :src=`https://www.countryflags.io/${film.original_language}/shiny/64.png` class="language">
+              <span class="overview"> {{film.overview}} </span>
               <div class="rating">
                 <i v-for="full in rating(film)" class="fas fa-star" ></i>
                 <i v-for="empty in (5 - rating(film))" class="far fa-star"></i>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

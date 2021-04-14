@@ -5,6 +5,7 @@ var app = new Vue({
   data: {
     films: [],
     search: '',
+    cast: [],
   },
   methods: {
     searchFilm: function () {
@@ -37,6 +38,7 @@ var app = new Vue({
        } else
         return obj.original_name;
      },
+
      rating: function (film) {
        return Math.round(film.vote_average / 2)
      }
